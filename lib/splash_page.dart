@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:umeet/login_screen.dart';
+import 'package:u_meet/login_screen.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Hero(tag: "logo", child: Image.asset('assets/images/logo.png')),
+        child: Hero(tag: "logo", child: Image.asset('assets/logo.png')),
       ),
     );
   }
