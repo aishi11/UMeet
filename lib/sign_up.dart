@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:u_meet/login_screen.dart';
+import 'package:umeet/login_screen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -141,7 +141,7 @@ class _SignUpState extends State<SignUp> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-                "assets/loginbg3.png"), // Ganti dengan path gambar Anda
+                "assets/images/loginbg3.png"), // Ganti dengan path gambar Anda
             fit: BoxFit
                 .cover, // Menyesuaikan gambar agar sesuai dengan ukuran layar
           ),
