@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:u_meet/sign_up.dart';
-import 'package:u_meet/homepage.dart';
+import 'package:umeet/main.dart';
+import 'package:umeet/sign_up.dart';
+import 'package:umeet/recruitment_details_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -38,7 +39,7 @@ class LoginScreen extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  const Homepage()), // Navigasi ke halaman berikutnya
+                  HomePage()), // Navigasi ke halaman berikutnya
         );
       } else {
         // Incorrect email or password
@@ -114,7 +115,7 @@ class LoginScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/loginbg3.png"),
+            image: AssetImage("assets/images/loginbg3.png"),
             fit: BoxFit.cover, //
           ),
         ),
