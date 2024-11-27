@@ -7,7 +7,14 @@ class AkunSayaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Akun Saya"),
+        title: const Text(
+          "Akun Saya",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.blueAccent,
+        elevation: 1,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -15,66 +22,121 @@ class AkunSayaScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(7.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Detail Akun",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Section Title
+              const Text(
+                "Detail Akun",
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Image.asset("assets/images/Profile.png", width: 80, height: 80),
-                const SizedBox(width: 20),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              const SizedBox(height: 20),
+
+              // Profile Section
+              Center(
+                child: Column(
                   children: [
-                    Text(
-                      "Laila Tsabitah",
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage("assets/images/Profile.png"),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Kelompok 5",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "Fakultas Ilmu Komputer, Sistem Informasi",
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 40),
-            const Text(
-              "Informasi Akun:",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
               ),
-            ),
-            const SizedBox(height: 10),
-            const ListTile(
-              leading: Icon(Icons.email),
-              title: Text("lailatsabitah@student.unsri.ac.id"),
-            ),
-            const ListTile(
-              leading: Icon(Icons.phone),
-              title: Text("+62 812 3456 7890"),
-            ),
-            const ListTile(
-              leading: Icon(Icons.location_on),
-              title: Text("Palembang, Sumatera Selatan"),
-            ),
-          ],
+              const SizedBox(height: 30),
+
+              // Account Info Section
+              const Text(
+                "Informasi Akun",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              // Account Info Cards
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const ListTile(
+                  leading: Icon(Icons.email, color: Colors.blueAccent),
+                  title: Text("rizkysinaga@student.unsri.ac.id"),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const ListTile(
+                  leading: Icon(Icons.phone, color: Colors.blueAccent),
+                  title: Text("+62 812 3456 7890"),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const ListTile(
+                  leading: Icon(Icons.location_on, color: Colors.blueAccent),
+                  title: Text("Palembang, Sumatera Selatan"),
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              // Logout Button
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    
+                    // Add logout functionality here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
+                  ),
+                  child: const Text(
+                    "Keluar",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

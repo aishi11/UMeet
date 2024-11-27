@@ -13,6 +13,9 @@ dependencies:
   table_calendar: ^3.0.2
   ionicons: ^0.1.2
   cupertino_icons: ^1.0.6
+  flutter_rating_bar: ^4.0.0
+  dio: ^5.2.1
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +63,19 @@ flutter:
     - assets/images/arrownext.png
     - assets/images/akunsaya.png
     - assets/images/tentang.png
+    - assets/images/frame1.png
+    - assets/images/frame2.png
+    - assets/images/frame3.png
+    - assets/images/frame4.png
+    - assets/images/frame5.png
+    - assets/images/frame6.png
+    - assets/images/acara1.png
+    - assets/images/acara2.png
+    - assets/images/acara3.png
+    - assets/images/daftarberhasil.png
+    - assets/images/event8.png
+    - assets/images/formimage.png   
+
 
    
 

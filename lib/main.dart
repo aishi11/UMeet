@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:umeet/eventpage.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:umeet/review.dart';
 import 'package:umeet/splash_page.dart';
 import 'package:umeet/screens/account_screen.dart';
 import 'package:umeet/chat.dart';
+import 'package:umeet/eventdaftar.dart';
+import 'package:umeet/favorite.dart';
+import 'package:umeet/terdaftar.dart';
+import 'package:umeet/sertifikat.dart';
 
 void main() {
   runApp(UMeetApp());
@@ -85,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(color: Colors.black, fontFamily: 'outfit'), // Warna abu-abu untuk teks biasa
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'MOHAMMAD RIZKY SINAGA', // Teks yang ingin diwarnai biru
+                      text: 'KELOMPOK 5', // Teks yang ingin diwarnai biru
                       style: TextStyle(
                         color: Colors.black, fontFamily: 'outfit', fontWeight: FontWeight.bold // Ubah warna menjadi biru
                       ),
@@ -262,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                       // Arahkan ke halaman lain di sini
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => AccountScreen()), // Ganti dengan halaman yang sesuai
+                        MaterialPageRoute(builder: (context) =>EventHomePage()), // Ganti dengan halaman yang sesuai
                       );
                     },
                     child: Text('lainnya', style: TextStyle(fontSize: 16, color: Colors.blue)),
@@ -279,10 +284,18 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       mainAxisSize: MainAxisSize.min, // Menghindari kolom mengambil ruang vertikal berlebih
                       children: [
-                        CircleAvatar(
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => EventTerdaftar()),
+                            );
+                          },
+                          child: CircleAvatar(
                           backgroundColor: Colors.blue, // Lingkaran biru
                           radius: 24, // Ukuran lingkaran
                           child: Icon(Ionicons.id_card_outline, color: Colors.white), // Ikon di dalam lingkaran
+                        ),
                         ),
                         SizedBox(height: 8), // Jarak antara ikon dan label
                         Text('Terdaftar'),
@@ -291,10 +304,18 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.blue,
-                          radius: 24,
-                          child: Icon(Ionicons.heart_outline, color: Colors.white),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => EventFavorite()),
+                            );
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            radius: 24,
+                            child: Icon(Icons.favorite_outline, color: Colors.white),
+                          ),
                         ),
                         SizedBox(height: 8),
                         Text('Favorit'),
@@ -303,10 +324,18 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircleAvatar(
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => EventReviewPage()),
+                            );
+                          },
+                          child: CircleAvatar(
                           backgroundColor: Colors.blue,
                           radius: 24,
                           child: Icon(Ionicons.time_outline, color: Colors.white),
+                        ),
                         ),
                         SizedBox(height: 8),
                         Text('Riwayat'),
@@ -315,10 +344,18 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircleAvatar(
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => EventCertificatePage()),
+                            );
+                          },
+                          child: CircleAvatar(
                           backgroundColor: Colors.blue,
                           radius: 24,
                           child: Icon(Ionicons.document_text_outline, color: Colors.white),
+                        ),
                         ),
                         SizedBox(height: 8),
                         Text('Sertifikat'),
@@ -369,13 +406,23 @@ class _HomePageState extends State<HomePage> {
                       ),
                       // Event Card 2
                       EventCard(
-                        title: 'Open Recruitment Staff Ahli',
-                        organizer: 'BEM KM Unsri',
-                        date: '8 Mei 2024',
-                        attendees: 5,
-                        imagePath: 'assets/images/pamflet2.jpg', // Gambar yang berbeda
-                        subTitle: 'Perekrutan Staff Ahli',
-                      ),
+                      title: 'SEMINAR SI FEST 2023',
+                      organizer: 'HIMSI UNSRI',
+                      date: '8 Mei 2023',
+                      attendees: 5,
+                      imagePath: 'assets/images/event8.png', // Gambar yang berbeda
+                      subTitle: 'Seminar IT Nasional',
+                      onTap: () {
+                        print('Navigating to EventDetailPage');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EventDetailPage(),
+                          ),
+                        );
+                      },
+                    ),
+
                       // Event Card 3
                       EventCard(
                         title: 'Seminar Nasional IT',
@@ -502,6 +549,7 @@ class EventCard extends StatelessWidget {
   final int attendees;
   final String imagePath;
   final String subTitle;
+  final VoidCallback? onTap;
 
   EventCard({
     required this.title,
@@ -510,11 +558,14 @@ class EventCard extends StatelessWidget {
     required this.attendees,
     required this.imagePath,
     required this.subTitle,
+    this.onTap
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return GestureDetector(
+      onTap: onTap, // Tambahkan aksi klik
+      child: Card(
       elevation: 4,
       margin: EdgeInsets.all(10),
       child: Column(
@@ -612,6 +663,7 @@ class EventCard extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }
@@ -663,3 +715,4 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     );
   }
 }
+
